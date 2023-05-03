@@ -4,12 +4,10 @@
   email = {{ $email | quote }}
 
 [edit]
-  command = "nvim"
+  command = "code"
+  args = ["--wait"]
   
 [diff]
-    command = "code"
-    args = ["--diff", "{{ .Destination }}", "{{ .Target }}"]
-    
-[merge]
-  command = "nvim"
-  args = ["-d", "{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"]
+  command = "code"
+  args = ["--diff"]
+
