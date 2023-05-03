@@ -32,3 +32,5 @@ brew install neovim
 
 {{ else if eq .chezmoi.os "linux" }}
 sudo apt install neovim
+
+{{ end }}
