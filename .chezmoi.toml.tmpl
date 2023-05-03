@@ -9,5 +9,6 @@
   
 [diff]
   command = "code"
-  args = ["--diff"]
+  args = ["--diff", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
+  
 
