@@ -1,0 +1,11 @@
+{{- $email := promptStringOnce . "email" "Email address" - }}
+
+[data]
+  email = {{ $email | quote }}
+
+[edit]
+  command = "nvim"
+  
+[diff]
+    command = "code"
+    args = ["--diff", "{{ .Destination }}", "{{ .Target }}"]
