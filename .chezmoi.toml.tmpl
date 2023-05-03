@@ -9,3 +9,7 @@
 [diff]
     command = "code"
     args = ["--diff", "{{ .Destination }}", "{{ .Target }}"]
+    
+[merge]
+  command = "nvim"
+  args = ["-d", "{{ .Destination }}", "{{ .Source }}", "{{ .Target }}"]
