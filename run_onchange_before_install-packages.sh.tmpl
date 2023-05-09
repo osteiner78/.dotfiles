@@ -39,7 +39,7 @@ chsh -s /usr/bin/zsh
 
 {{ if lookPath "snap" }}
 {{   range $classicSnaps }}
-{{ $sudo }}snap install --classic {{ . }}
+sudo snap install --classic {{ . }}
 {{   end }}
 {{ end }}
 
