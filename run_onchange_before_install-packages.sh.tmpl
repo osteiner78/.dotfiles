@@ -1,5 +1,5 @@
 {{ if eq .chezmoi.os "linux" -}}
-#!/bin/sh
+#!/bin/bash
 set -eufo pipefail
 
 sudo add-apt-repository ppa:agornostal/ulauncher #ulauncher
@@ -35,7 +35,7 @@ chsh -s /usr/bin/zsh
 snap install nvim --classic
 
 {{ else if eq .chezmoi.os "darwin" -}}
-#!/bin/sh
+#!/bin/bash
 set -eufo pipefail
 
 {{ $brews := list
