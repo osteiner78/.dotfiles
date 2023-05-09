@@ -22,11 +22,13 @@ sudo apt install exa
 #susudo apt install yt-dlp
 sudo apt install ulauncher
 sudo apt install meld
+sudo apt install terminator
 
 #curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
 #echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
 #sudo apt install spotify-client
 
+curl -L --create-dirs --output-dir "~/.local/share/fonts" -O https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf
 
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
