@@ -1,4 +1,22 @@
-{{ if eq .chezmoi.os "linux" -}}
+{{ if eq .osid "linux-debian" "linux-raspbian" "linux-pop" "linux-ubuntu" -}}
+
+{{ $packages := list
+     "bat"
+     "curl"
+     "htop"
+     "mc"
+     "tmux"
+     "tree"
+     "wget"
+     "exa"
+     "ulauncher"
+     "meld"
+     "terminator"
+     "zsh" -}}
+
+{{ $classicSnaps := list 
+	"nvim" -}}
+
 #!/bin/bash
 set -eufo pipefail
 
@@ -6,21 +24,7 @@ sudo add-apt-repository ppa:agornostal/ulauncher #ulauncher
 #sudo add-apt-repository multiverse
 sudo apt update 
 sudo apt autoremove -y
-
-sudo apt install bat -y
-sudo apt install curl -y
-sudo apt install htop -y
-sudo apt install mc -y
-#sudo apt install neovim -y
-sudo apt install tmux -y
-sudo apt install tree -y
-sudo apt install wget -y
-sudo apt install exa -y
-
-sudo apt install ulauncher -y
-sudo apt install meld -y
-sudo apt install terminator -y
-sudo apt install zsh -y
+sudo apt-get install -y {{ $packages | join " " }}
 
 #curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
 #echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
@@ -30,9 +34,19 @@ curl -L --create-dirs --output-dir ".local/share/fonts" -O https://github.com/ro
 curl -L --create-dirs --output-dir ".local/share/fonts" -O https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold.ttf
 curl -L --create-dirs --output-dir ".local/share/fonts" -O https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Italic.ttf
 curl -L --create-dirs --output-dir ".local/share/fonts" -O https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20BoldItalic.ttf
+
 chsh -s /usr/bin/zsh
 
-snap install nvim --classic
+{{ if lookPath "snap" }}
+{{   range $classicSnaps }}
+{{ $sudo }}snap install --classic {{ . }}
+{{   end }}
+{{ end }}
+
+#snap install nvim --classic
+{{ end -}}
+
+
 
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/bash
