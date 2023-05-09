@@ -65,7 +65,7 @@ cask "{{ . }}"
 EOF
 
 # If LINUX
-{{ else if eq .chezmoi.os "darwin" -}}
+{{ else if eq .chezmoi.os "linux" -}}
 #!/bin/sh
 sudo add-apt-repository ppa:agornostal/ulauncher #ulauncher
 sudo add-apt-repository multiverse # for steam
