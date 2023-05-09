@@ -1,0 +1,96 @@
+# If MacOS
+{{ if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+set -eufo pipefail
+
+{{ $brews := list
+     "bat"
+     "curl"
+	 "htop"
+	 "midnight-commander"
+	 "neovim"
+	 "powerlevel10k"
+	 "tmux"
+	 "tree"
+	 "tree-sitter"
+	 "zsh-autosuggestions"
+	 "zsh-completions"
+	 "zsh-syntax-highlighting"
+	 "wget"
+     "exa"
+     "yt-dlp" -}}
+
+{{ $casks := list
+     "1password" 
+     "1password-cli" 
+	 "alfred"
+	 "appcleaner"
+	 "arc"
+	 "dash"
+	 "firefox"
+	 "fork"
+	 "google-chrome"
+	 "grandperspective"
+	 "itau"
+     "iterm2"
+	 "jettison"
+     "karabiner-elements"
+	 "keyboard-maestro"
+	 "logitech-options"
+	 "macupdater"
+	 "maestral"
+	 "meld"
+	 "microsoft-office"
+	 "mimestream"
+	 "nordvpn"
+	 "obsidian"
+	 "rectangle"
+	 "fujitsu-scansnap-home"
+     "spotify"
+	 "steam"
+	 "sublime-text"
+	 "thunderbird"
+     "visual-studio-code"
+     "vlc"
+	 "whatsapp"
+	 "zoom" -}}
+
+brew bundle --no-lock --file=/dev/stdin <<EOF
+{{ range ($brews | sortAlpha | uniq) -}}
+brew "{{ . }}"
+{{ end -}}
+{{ range ($casks | sortAlpha | uniq) -}}
+cask "{{ . }}"
+{{ end -}}
+EOF
+
+# If LINUX
+{{ else if eq .chezmoi.os "darwin" -}}
+#!/bin/sh
+sudo add-apt-repository ppa:agornostal/ulauncher #ulauncher
+sudo add-apt-repository multiverse # for steam
+sudo apt update 
+
+sudo apt install bat
+sudo apt install curl
+sudo apt install htop
+sudo apt install midnight-commander
+sudo apt install neovim
+sudo apt install powerlevel10k
+sudo apt install tmux
+sudo apt install tree
+sudo apt install tree-sitter
+sudo apt install zsh-autosuggestions
+sudo apt install zsh-completions
+sudo apt install zsh-syntax-highlighting
+sudo apt install wget
+sudo apt install exa
+sudo apt install yt-dlp
+sudo apt install ulauncher
+sudo apt install meld
+sudo apt install spotify
+sudo apt install steam
+
+{{ end -}}
+
+
