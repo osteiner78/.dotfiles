@@ -33,6 +33,8 @@
     stripComponents = 1
     refreshPeriod = "168h"
 
+{{- if and (not .ephemeral) (not .headless) }}
+{{-   $fontDir := "" }}
 {{-   if eq .chezmoi.os "darwin" }}
 {{-     $fontDir = "Library/Fonts" }}
 {{-   else if eq .chezmoi.os "linux" }}
