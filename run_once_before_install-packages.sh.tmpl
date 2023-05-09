@@ -8,24 +8,24 @@ sudo apt autoremove
 sudo apt install bat
 sudo apt install curl
 sudo apt install htop
-sudo apt install midnight-commander
+sudo apt install mc
 sudo apt install neovim
-sudo apt install powerlevel10k
+#sudo apt install powerlevel10k
 sudo apt install tmux
 sudo apt install tree
-sudo apt install tree-sitter
-sudo apt install zsh-autosuggestions
-sudo apt install zsh-completions
-sudo apt install zsh-syntax-highlighting
+#sudo apt install tree-sitter
+#sudo apt install zsh-autosuggestions
+#sudo apt install zsh-completions
+#sudo apt install zsh-syntax-highlighting
 sudo apt install wget
 sudo apt install exa
-sudo apt install yt-dlp
+#susudo apt install yt-dlp
 sudo apt install ulauncher
 sudo apt install meld
 
-curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
-echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
-sudo apt install spotify-client
+#curl -sS https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg | sudo gpg --dearmor --yes -o /etc/apt/trusted.gpg.d/spotify.gpg
+#echo "deb http://repository.spotify.com stable non-free" | sudo tee /etc/apt/sources.list.d/spotify.list
+#sudo apt install spotify-client
 
 
 {{ else if eq .chezmoi.os "darwin" -}}
